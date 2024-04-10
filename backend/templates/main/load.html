@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/cornerstone-core/dist/cornerstone.min.js
+"></script>
+    <script src="https://unpkg.com/cornerstone-wado-image-loader"></script>
+    <script src="https://unpkg.com/dicom-parser"></script>
+    <script>
+      cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
+      cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
+
+      function onDragOver(e) {
+
+          // stop browser processing right away
+          e.stopPropagation();
+          e.preventDefault();
+
+      };
+
+      function onDrop(e) {
+
+          // stop browser processing right away
+          e.stopPropagation();
+          e.preventDefault();
+
+          var f = e.dataTransfer.files[0];
+
+          var i = cornerstoneWADOImageLoader.wadouri.fileManager.add(f);
+          
+          cornerstone.loadImage(i).then(function(image) {
+
+            console.log('Loaded', image);
+
+          });
+
+      };
+
+      window.onload = function() {
+
+        document.body.addEventListener('dragover', onDragOver);
+        document.body.addEventListener('drop', onDrop);
+
+      };
+
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,8 @@
+pip install pandas
+pip install pillow
+pip install numpy
+pip install pytorch-lightning-bolts
+pip install -U scikit-learn scipy matplotlib
+pip install flask
+pip install flask-cors
+pip install scikit-image
